@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Category
+{% endblock title %}
+
+{% block main %}
+<!-- Container with vibrant background -->
+<div class="container my-5 py-5">
+    <div class="row">
+        <!-- Sidebar with colorful links -->
+        <div class="col-sm-3">
+            <div class="list-group">
+                {% for val in title %}
+                    <a href="{% url 'category-title' val.title %}" class="list-group-item list-group-item-action bg-dark text-white rounded-pill mb-2 hover-effect" aria-current="true">
+                        {{ val.title }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- Product Cards -->
+        <div class="col-sm-9">
+            <div class="row row-cols-1 row-cols-md-2 g-6">
+                {% for prod in product %}
+                <div class="col" data-aos="fade-up">
+                    <div class="card h-100 shadow-lg" style="background-color:; border-radius: 20px;">
+                        <img src="{{ prod.product_image.url }}" alt="{{ prod.title }}" class="card-img-top img-fluid mb-3 car-img" style="height: 250px; object-fit: cover; border-radius: 20px;" />
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">{{ prod.title }}</h5>
+        
+                            <!-- Model Information -->
+                            <div class="d-flex justify-content-between mb-3">
+                                <p class="mb-0"><i class="fa-solid fa-car text-primary"></i> <strong class="text-dark">{{ prod.model }}</strong></p>
+                            </div>
+        
+                            <!-- Features Section with Icons -->
+                            <div class="feature mb-3 text-dark">
+                                <p><i class="fa-solid fa-chair"></i> {{ prod.seats }} Seats</p>
+                                <p><i class="fa-solid fa-gas-pump"></i> {{ prod.fuel_type }}</p>
+                                <p><i class="fa-solid fa-tachometer-alt"></i> {{ prod.transmission }}</p>
+                            </div>
+        
+                            <!-- Price & Rent Button -->
+                            <div class="price d-flex justify-content-between align-items-center">
+                                <p class="h5 mb-0"> ₹ {{ prod.rent_price }}/Day</p>
+                                <a href ="{% url 'rent_car' prod.id %}">
+                                <button class="btn btn-primary btn-sm">Book Now</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+{% endblock main %}
+
+{% block styles %}
+<!-- Add custom styles -->
+<style>
+    /* Hover Effect for Category Links */
+    .list-group-item {
+        transition: all 0.3s ease;
+    }
+    .list-group-item:hover {
+        background-color: #28a745;
+        transform: translateX(5px);
+    }
+
+    /* Hover effect for Rent Button */
+    .hover-button:hover {
+        background-color: #ff5733;
+        color: white;
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+    }
+
+    /* Card Hover Effect */
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* Add a black border to the cards */
+    .car-card {
+        border: 2px solid black;  /* Black border added */
+        background: linear-gradient(135deg, #f4a261, #e76f51);  /* Gradient background */
+    }
+
+    /* Smooth transitions for card components */
+    .transition-all {
+        transition: all 0.3s ease;
+    }
+
+    /* Custom styling for car images */
+    .car-img {
+        border-radius: 10px;
+    }
+
+    /* Features styling with icons */
+    .feature p {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .text-success, .text-info, .text-danger, .text-primary {
+        font-size: 16px;
+    }
+
+    /* Background styling for container */
+    .bg-light {
+        background-color: #f0f8ff !important;
+    }
+</style>
+{% endblock %}

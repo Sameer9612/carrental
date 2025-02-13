@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Product Detail
+{% endblock title %}
+
+{% block main %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-between">
+
+        <!-- Product Image Section -->
+        <div class="col-lg-6 col-md-12 text-center">
+            <img src="{{ product.product_image.url }}" class="img-fluid rounded" alt="{{ product.title }}">
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="col-lg-5 col-md-12 mt-4 mt-lg-0">
+            <h1 class="display-4" style="font-family: Georgia;">{{ product.title }}</h1>
+            
+            <!-- Price Section with extra styling for attractiveness -->
+            <div class="d-flex align-items-center mb-4" style="margin-top: 30px;">
+                <h5 class="text-danger fs-3 me-3 fw-bold">
+                    Rs. {{ product.discounted_price }}/-
+                </h5>
+                <small class="text-decoration-line-through text-muted fs-5">
+                    <del>Rs. {{ product.selling_price }}/-</del>
+                </small>
+            </div>
+            
+            <h4 class="fw-bold">Product Description</h4>
+            <ul class="list-unstyled fs-5" style="font-family: Rajdhani;">
+                <li>{{ product.description }}</li>
+            </ul>
+
+            <!-- Product Buttons -->
+            <div class="buttons row flex" style="font-family: Rajdhani;">
+                <!-- Add to Cart Form -->
+                <form action="{% url 'add_to_cart' %}" method="POST" class="d-inline">
+                    {% csrf_token %}
+                    <input type="hidden" name="prod_id" value="{{ product.id }}"/>
+                    <button type="submit" class="btn btn-primary custom-btn btn-lg">
+                        <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                    </button>
+                </form>
+
+                <!-- Buy Now Button -->
+                <a href="{% url 'show_cart' %}" class="btn custom-btn btn-dark btn-lg w-100 text-white text-decoration-none">
+                    <i class="fas fa-credit-card me-2"></i> Buy Now
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock main %}
+
+<style>
+    /* Custom Button Styling */
+    .custom-btn {
+        border-radius: 50px;
+        padding: 15px 25px;
+        font-size: 18px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+    /* Hover Effects */
+    .custom-btn:hover {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+        background-color: #0056b3;
+    }
+
+    /* Specific Button Styles */
+    .btn-primary.custom-btn {
+        background: linear-gradient(145deg, #007bff, #0056b3);
+        border: none;
+    }
+
+    .btn-dark.custom-btn {
+        background: linear-gradient(145deg, #343a40, #23272b);
+        border: none;
+    }
+
+    .btn-primary.custom-btn:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-dark.custom-btn:hover {
+        background-color: #23272b;
+    }
+
+    /* Add icon spacing */
+    .custom-btn i {
+        font-size: 20px;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+

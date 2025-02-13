@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Booking Details - {{ booking.product.title }}
+{% endblock %}
+
+{% block main %}
+<!-- Main container with dark theme -->
+<div class="container mt-5 py-4 text-white">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6"> <!-- Adjusted width of the card -->
+            <div class="card bg-dark border-0">
+                <div class="card-body p-4">
+
+                    <!-- Header -->
+                    <h2 class="text-center text-warning font-weight-bold mb-4">Booking Details</h2>
+                    <hr class="border-light mb-4">
+                    {% for booking in bookings %}
+                    <!-- Product Information -->
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <!-- Image Styling with increased size but constrained to the container width -->
+                            <img src="{{ booking.product.product_image.url }}" 
+                                 alt="{{ booking.product.title }}" 
+                                 class="img-fluid rounded-lg shadow-lg" 
+                                 style="object-fit: cover; height: 300px; width: 100%;">
+                        </div>
+                        <div class="col-12">
+                            <!-- Title -->
+                            <h2 class="text-light text-center font-weight-bold">{{ booking.product.title }}</h2>
+                            <p class="text-muted mb-3">{{ booking.product.description }}</p>
+                            
+                            <!-- Information Grid -->
+                            <div class="row">
+                                <!-- Left side: Seats and Fuel -->
+                                <div class="col-md-6 mt-4">
+                                    <ul class="list-unstyled">
+                                        <li><strong>MODEL  : </strong> {{ booking.product.model}}</li>
+                                        <li><strong>FUEL  : </strong> {{ booking.product.fuel_type }}</li>
+                                    </ul>
+                                </div>
+                    
+                                <!-- Right side: Model and Transmission -->
+                                <div class="col-md-6 d-flex justify-content-end mt-4 ">
+                                    <ul class="list-unstyled">
+                                        <li><strong>SEATS  : </strong> {{ booking.product.seats }}</li>
+
+                                        
+                                        <li><strong>TRANSMISSION  : </strong> {{ booking.product.transmission }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rental Details -->
+                    <div class="my-4">
+                        <h5 class="text-warning font-weight-bold">Rental Information</h5>
+                        <p><strong>Rental Duration:</strong> {{ booking.rental_duration }} days</p>
+                        <p><strong>Total Price:</strong> ₹ {{ booking.total_price }}</p>
+                    </div>
+                    {% endfor %}
+
+                    <!-- Customer Address Information -->
+                 
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'home' %}" class="btn btn-outline-light px-4 py-2 rounded-pill">Back to Home</a>
+                        {% comment %} <a href="{% url 'rent_car' booking.product.id %}" class="btn btn-success px-4 py-2 rounded-pill">Rent Another Car</a> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

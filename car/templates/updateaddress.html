@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Update Address
+{% endblock title %}
+
+{% block main %}
+<div class="container my-5">
+    <div class="row">
+        <!-- Welcome Section -->
+        <div class="col-12 text-center mb-4">
+            <h3>Welcome, <span class="text-capitalize">{{ request.user.username }}</span></h3>
+        </div>
+
+        <!-- Sidebar: Links -->
+        <div class="col-md-3 col-sm-12 border-end">
+            <ul class="list-unstyled">
+                <li>
+                    <a href="{% url 'profile' %}" class="btn btn-primary w-100 mb-2">Profile</a>
+                </li>
+                <li>
+                    <a href="{% url 'address' %}" class="btn btn-primary w-100">Address</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Update Address Form -->
+        <div class="col-md-8 offset-md-1 col-sm-12">
+            <h4 class="text-center mb-4">Update Address</h4>
+            
+            <!-- Display success or error messages -->
+            {% if messages %}
+                <div class="alert alert-info">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <form action="" method="post">
+                {% csrf_token %}
+                
+                {% for fm in form %}
+                    <div class="mb-3">
+                        {{ fm.label_tag }} {{ fm }}
+                        <small class="text-danger">{{ fm.errors|striptags }}</small>
+                    </div>
+                {% endfor %}
+
+                <div class="col-12 mt-3">
+                    <button type="submit" class="btn btn-primary w-100">Update Address</button>
+                    <a href="{% url 'address' %}" class="btn btn-danger w-100 mt-3">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock main %}

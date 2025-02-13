@@ -1,0 +1,630 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+HOME
+{% endblock title %}
+
+{% block main %}
+
+<!-- Include AOS CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+<!-- Hero Section -->
+<div class="home" data-aos="fade-up">
+    <div class="main-sec">
+        <div class="left" data-aos="fade-right">
+            <p class="txt1">Easy And Fast Way To <span class="blue-text">Rent</span> Your Car</p>
+            <p>Experience the convenience and freedom of renting a car with our seamless and quick process. Whether for a road trip or a special event, we have the perfect vehicle to meet your needs.</p>
+            <div class="btn">
+                <input class="car" type="button" value="Rent Car">
+            </div>
+        </div>
+
+        <div class="right" data-aos="fade-left">
+            <img src="{% static 'car/images/banner/banner.jpg.png' %}" alt="" />
+        </div>
+    </div>
+</div>
+
+<!-- Car Section -->
+<div class="car-sec py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <h3 data-aos="fade-up">Explore Our Cars</h3>
+                <p class="lead mb-5" data-aos="fade-up">Discover a wide range of cars for your needs.</p>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for i in products %}
+            <div class="col" data-aos="fade-up">
+                <div class="card h-100 shadow-lg" style="background-color:lightgoldenrodyellow; border-radius: 20px;">
+                    <img src="{{ i.product_image.url }}" alt="{{ i.title }}" class="card-img-top img-fluid mb-3 car-img" style=" border-radius: 20px;" />
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i.title }}</h5>
+                        
+                        <div class="review mb-3">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star-half-stroke"></i>
+                            <i>Satisfied Customers</i>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mb-3">
+                            <p class="mb-0"><i class="fa-solid fa-car text-primary"></i> <strong class="text-dark">{{ i.model }}</strong></p>
+                        </div>
+
+                        <div class="feature mb-3">
+                            <p><i class="fa-solid fa-chair"></i> {{ i.seats }} Seats</p>
+                            <p><i class="fa-solid fa-gas-pump"></i> {{ i.fuel_type }}</p>
+                            <p><i class="fa-solid fa-tachometer-alt"></i> {{ i.transmission }}</p>
+                        </div>
+
+                        <div class="price d-flex justify-content-between align-items-center">
+                            <p class="h5 mb-0"> ₹ {{ i.rent_price }}/Day</p>
+                            <button class="btn btn-primary btn-sm">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Why Choose Us Section -->
+<section class="container py-5">
+    <div class="text-center mb-5" data-aos="zoom-in">
+        <h2>Why Choose Us</h2>
+        <p class="lead">Here are the top reasons why you should choose us.</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <!-- 24 Hour Support -->
+        <div class="col-md-3 mb-4" data-aos="flip-left">
+            <div class="card shadow-lg border-primary h-100">
+                <div class="card-body text-center">
+                    <i class="fa fa-phone fa-3x mb-3 text-primary"></i>
+                    <h5 class="card-title">24 Hour Support</h5>
+                    <p class="card-text">We are available 24/7 to assist you with any questions or issues.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Best Price -->
+        <div class="col-md-3 mb-4" data-aos="flip-right">
+            <div class="card shadow-lg border-success h-100">
+                <div class="card-body text-center">
+                    <i class="fa fa-tag fa-3x mb-3 text-success"></i>
+                    <h5 class="card-title">Best Price</h5>
+                    <p class="card-text">We offer the best prices without compromising on quality.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Free Cancellation -->
+        <div class="col-md-3 mb-4" data-aos="flip-left">
+            <div class="card shadow-lg border-warning h-100">
+                <div class="card-body text-center">
+                    <i class="fa fa-times-circle fa-3x mb-3 text-warning"></i>
+                    <h5 class="card-title">Free Cancellation</h5>
+                    <p class="card-text">Enjoy peace of mind with free cancellation up to 24 hours before your reservation.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security & Reliability -->
+        <div class="col-md-3 mb-4" data-aos="flip-right">
+            <div class="card shadow-lg border-info h-100">
+                <div class="card-body text-center">
+                    <i class="fa fa-shield-alt fa-3x mb-3 text-info"></i>
+                    <h5 class="card-title">Security & Reliability</h5>
+                    <p class="card-text ">Our services are secure and reliable, ensuring a safe and smooth experience.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Achievement Section -->
+<section class="achie-sec">
+    <div class="txt">
+        <p class="txt1">Our <span>Achievement</span></p>
+        <p>We are proud to have achieved remarkable milestones in our journey. We are committed to providing the best car rental experience for our customers.</p>
+    </div>
+
+    <div class="main-sec">
+        <div class="box">
+            <p class="txt1" id="countdownDisplay">4000+</p>
+            <p>Active Members</p>
+        </div>
+
+        <div class="box">
+            <p class="txt1" id="countdownDisplay1">3000+</p>
+            <p>Car Colors</p>
+        </div>
+
+        <div class="box">
+            <p class="txt1" id="countdownDisplay2">6000+</p>
+            <p>Car Models</p>
+        </div>
+
+        <div class="box">
+            <p class="txt1" id="countdownDisplay3">10k</p>
+            <p>Positive Ratings</p>
+        </div>
+    </div>
+</section>
+
+<!-- Start Section -->
+<section class="start-sec">
+    <div class="main-sec">
+        <div class="left">
+            <p class="txt1">Ready To Get Started?</p>
+            <p class="txt2">We provide fast and reliable car rental services tailored to your needs. Whether you're going on a road trip or need a car for business, QuickDrive has a wide range of vehicles to choose from.</p>
+            <div class="btn">
+                <a href="{% url 'contact' %}">
+                    <button>Contact Us</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="right">
+            <img src="{% static 'car/images/banner/verna.jpg.png' %}" alt="" />
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="foot-sec">
+    <div class="logo">
+        <h1>QuickDrive</h1>
+    </div>
+
+    <div class="copy">
+        <p>Copyright &copy; 2025 Design By QuickDrive</p>
+    </div>
+
+    <div class="item">
+        <a href="/">Website Terms</a>
+        <a href="{% url 'contact' %}">Contact Us</a>
+        <a href="/">Privacy Policy</a>
+    </div>
+</footer>
+
+<!-- Include AOS JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<!-- Custom JavaScript for Countdown and AOS -->
+<script>
+    // Initialize AOS
+    AOS.init({
+        duration: 1200, // Animation duration
+        once: true, // Animation happens only once
+    });
+
+    // Countdown function
+    function startCountdown(elementId, targetValue) {
+        const countdownDisplay = document.getElementById(elementId);
+        let timeLeft = 0;
+        countdownDisplay.textContent = timeLeft;
+        const countdown = setInterval(function() {
+            timeLeft++;
+            countdownDisplay.textContent = timeLeft;
+            if (timeLeft === targetValue) {
+                clearInterval(countdown);
+                countdownDisplay.textContent = targetValue + "+";
+            }
+        }, 20);
+    }
+
+    // Observer for countdown displays
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startCountdown('countdownDisplay', 100); 
+                startCountdown('countdownDisplay1', 250); 
+                startCountdown('countdownDisplay2', 200); 
+                startCountdown('countdownDisplay3', 300); 
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.5 });
+    observer.observe(document.getElementById('countdownDisplay'));
+</script>
+
+<!-- Custom Styles -->
+<style>
+
+    .home {
+        background-color: whitesmoke;
+        height: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .home .main-sec {
+        display: flex;
+        column-gap: 50px;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .home .right {
+        width: 400px;
+        height: 300px;
+        margin: 78px;
+        padding: 30px;
+        border-bottom-left-radius: 50%;
+        border-top-right-radius: 50%;
+        border-top-left-radius: 100px;
+        border-bottom-right-radius: 100px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background-image: linear-gradient(155deg, #a7ceff, #bfc9cb);
+    }
+    
+    .home .left {
+        padding: 30px;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        row-gap: 20px;
+        flex-direction: column;
+        width: 552px;
+    }
+    
+    .home .left .btn input {
+        padding: 10px 30px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: #0043ff8c;
+    }
+    
+    .home .main-sec .left .txt1 {
+        font-size: 4rem;
+        font-weight: 700;
+    }
+    
+    .home .right img {
+        width: 50vw;
+        filter: drop-shadow(20px 50px 25px #b3e3e3);
+    }
+
+    /* Car Section Styling */
+    .car-sec {
+        background-color: #f9f9f9;
+        padding: 30px 0;
+    }
+    
+    .car-sec .container {
+        max-width: 1200px;
+    }
+    
+    .car-sec h3 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .car-sec p.lead {
+        font-size: 1.25rem;
+        color: #666;
+    }
+    
+    .car-sec .car-card {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        background-color: #fff;
+    }
+    
+    .car-sec .car-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .car-sec .car-img {
+        height: 220px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    .car-sec .car-card:hover .car-img {
+        transform: scale(1.05);
+    }
+    
+    .car-sec .card-body {
+        padding: 20px;
+    }
+    
+    .car-sec .card-title {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #333;
+    }
+    
+    .car-sec .review {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .car-sec .review i {
+        color: #f39c12;
+    }
+    
+    /* Car Feature Styling */
+.car-sec .feature {
+    display: flex;
+    justify-content: space-between; /* Distribute items across the row */
+    align-items: center;
+    gap: 20px; /* Space between each feature */
+    margin-top: 10px;
+}
+
+.car-sec .feature p {
+    font-size: 1rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.car-sec .feature p i {
+    color: #0043ff8c;
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+    
+    .car-sec .price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .car-sec .price p {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .car-sec .price button {
+        background-color: #0043ff8c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .car-sec .price button:hover {
+        background-color: #0033cc;
+    }
+    
+
+    .support-sec {
+        height: 390px;
+        padding: 30px;
+        /* justify-content: center; */
+        flex-direction: column;
+        display: flex;
+        background-color: whitesmoke;
+    }
+    
+    .support-sec .txt {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 10px;
+    }
+    
+    .support-sec .txt .txt1 {
+        font-size: 3rem;
+        font-weight: 700;
+    }
+    
+    .support-sec .txt .txt1 span {
+        color: #0043ff8c;
+    }
+    
+    .support-sec .main-sec {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        column-gap: 10px;
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+    
+    .support-sec .main-sec .box {
+        /* background: red; */
+        padding: 20px;
+        width: 575px;
+        display: flex;
+        column-gap: 36px;
+        /* flex-direction: column; */
+        row-gap: 20px;
+    }
+    
+    .support-sec .main-sec .box i {
+        font-size: 30px;
+        background: #0043ff8c;
+        width: fit-content;
+        padding: 34px;
+        border-radius: 15px;
+    }
+    
+    .support-sec .main-sec .box .txt-sec {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+    
+    .support-sec .main-sec .box .txt-sec .txt1 {
+        font-size: 30px;
+        font-weight: 700;
+    }
+    
+    .achie-sec {
+        height: 390px;
+        padding: 30px;
+        justify-content: center;
+        flex-direction: column;
+        display: flex;
+        background-color: white;
+    }
+    
+    .achie-sec .txt {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 10px;
+    }
+    
+    .achie-sec .txt .txt1 {
+        font-size: 3rem;
+        font-weight: 700;
+    }
+    
+    .achie-sec .txt .txt1 span {
+        color: #0043ff8c;
+    }
+    
+    .achie-sec .main-sec .box {
+        background-color: white;
+        width: 300px;
+        height: 180px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        justify-content: center;
+        align-items: center;
+        row-gap: 20px;
+        border-radius: 10px;
+    }
+    
+    .achie-sec .main-sec .box .txt1 {
+        font-size: 3rem;
+        font-weight: 700;
+    }
+    
+    .achie-sec .main-sec {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        column-gap: 10px;
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+    
+    .start-sec {
+        height: 390px;
+        padding: 30px;
+        justify-content: center;
+        flex-direction: column;
+        display: flex;
+        background-color: white;
+    }
+    
+    .start-sec .main-sec {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(45deg, #17c5be, #1c243a);
+        border-radius: 10px;
+        padding: 30px;
+        column-gap: 50px;
+    }
+    
+    .start-sec .main-sec .left {
+        /* background: greenyellow; */
+        padding: 20px;
+        height: 300px;
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 20px;
+    }
+    
+    .start-sec .main-sec .left .txt1 {
+        font-size: 3rem;
+        font-weight: 700;
+    }
+    
+    .start-sec .main-sec .left .btn button {
+        padding: 10px 30px;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+    
+    .start-sec .main-sec .right {
+        /* background: rgb(47, 144, 255); */
+        padding: 20px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 20px;
+        width: 300px;
+        align-items: center;
+    
+        /* width: 400px;
+        height: 300px;
+        margin: 78px;
+        padding: 30px; */
+        border-bottom-left-radius: 50%;
+        border-top-right-radius: 50%;
+        border-top-left-radius: 100px;
+        border-bottom-right-radius: 100px;
+        /* display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center; */
+        background-image: linear-gradient(155deg, #a7ceff, #bfc9cb);
+    }
+    
+    .start-sec .main-sec .right img {
+        width: 50vw;
+        filter: drop-shadow(20px 50px 25px #b3e3e3);
+    }
+    
+    .foot-sec{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 50px;
+        background: whitesmoke;
+    }
+    
+    .foot-sec .item{
+        display: flex;
+        column-gap: 20px;
+    }
+    
+    .foot-sec .item a{
+        text-decoration: none;
+        color: black;
+    }
+</style>
+
+{% endblock main %}

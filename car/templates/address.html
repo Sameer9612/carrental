@@ -1,0 +1,70 @@
+{% extends 'home.html' %}
+
+{% load static %}
+{% block title %}
+  Address
+{% endblock title %}
+
+{% block main %}
+  <div class="container my-5">
+    <div class="row">
+      <!-- Welcome Section -->
+      <div class="col-12 text-center mb-5">
+        <h3 class="display-3 text-primary font-weight-bold">Welcome, <span class="text-uppercase " style="font-family: 'Poppins', sans-serif; font-weight: 700; color:rgb(0, 0, 0);">{{ request.user.username }}</span></h3>
+        <p class="lead text-muted">Manage your personal and company addresses efficiently</p>
+      </div>
+
+      <!-- Sidebar: Links -->
+      <div class="col-md-3 col-sm-12 mb-4 mb-md-0">
+        <ul class="list-unstyled">
+          <li>
+            <a href="{% url 'profile' %}" class="btn btn-gradient w-100 mb-3 py-3  shadow">Profile</a>
+          </li>
+          <li>
+            <a href="{% url 'address' %}" class="btn btn-gradient w-100 py-3 text-dark shadow">Address</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Address List -->
+      <div class="col-md-9 col-sm-12">
+        <div class="row">
+          {% for ad in add %}
+            <div class="col-md-6 col-sm-12 mb-4">
+              <div class="card shadow-lg border-0 rounded-4 bg-light border-info">
+                <div class="card-body">
+                  <h5 class="card-title text-success">Address {{ forloop.counter }}</h5>
+                  <p><i class="fas fa-user text-primary"></i> <strong>Name:</strong> <span class="text-dark">{{ ad.name }}</span></p>
+                  <p><i class="fas fa-phone text-warning"></i> <strong>Mobile:</strong> <span class="text-dark">{{ ad.mobile }}</span></p>
+                  <p><i class="fas fa-map-marker-alt text-danger"></i> <strong>State:</strong> <span class="text-dark">{{ ad.state }}</span></p>
+                  <p><i class="fas fa-city text-info"></i> <strong>City:</strong> <span class="text-dark">{{ ad.city }}</span></p>
+                  <p><i class="fas fa-cogs text-secondary"></i> <strong>Pincode:</strong> <span class="text-dark">{{ ad.zipcode }}</span></p>
+                  <div class="text-center mt-3">
+                    <a href="{% url 'update_address' pk=ad.pk %}" class="btn btn-danger btn-lg shadow">Update</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+          <!-- Company Address Section -->
+          <div class="col-md-6 col-sm-12 mb-4">
+            <div class="card shadow-lg border-0 rounded-4 bg-light border-success">
+              <div class="card-body">
+                <h5 class="card-title text-primary">Company Address</h5>
+                <p><i class="fas fa-building text-info"></i> <strong>Company Name:</strong> <span class="text-dark">Quick Drive Office</span></p>
+                <p><i class="fas fa-phone-alt text-warning"></i> <strong>Phone:</strong> <span class="text-dark">+91 1234567890</span></p>
+                <p><i class="fas fa-map-marker-alt text-danger"></i> <strong>Pincode:</strong> <span class="text-dark">10001</span></p>
+                <p><i class="fas fa-flag text-primary"></i> <strong>State:</strong> <span class="text-dark">New Delhi</span></p>
+                <p><i class="fas fa-city text-info"></i> <strong>City:</strong> <span class="text-dark">Dwarka</span></p>
+                <div class="text-center mt-3">
+                  <a href="#" class="btn btn-danger btn-lg shadow">Update</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock main %}

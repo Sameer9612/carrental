@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}
+    My Bookings
+{% endblock title %}
+
+{% block main %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4 font-weight-bold text-primary">Your Bookings</h1>
+
+    {% if bookings %}
+        <div class="row">
+            {% for booking in bookings %}
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card shadow-lg border-0 rounded-lg hover-zoom">
+                        <img src="{{ booking.product.product_image.url }}" alt="{{ booking.product.title }}" class="card-img-top rounded-top" style="height: 220px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">{{ booking.product.title }}</h5>
+                            <p class="card-text text-muted">{{ booking.product.description|truncatewords:20 }}</p>
+
+                            <ul class="list-unstyled">
+                                <li><strong>Model:</strong> {{ booking.product.model }}</li>
+                                <li><strong>Transmission:</strong> {{ booking.product.transmission }}</li>
+                                <li><strong>Seats:</strong> {{ booking.product.seats }}</li>
+                                <li><strong>Fuel:</strong> {{ booking.product.fuel_type }}</li>
+                            </ul>
+
+                            <hr>
+                            <h6 class="font-weight-bold text-primary"><strong>Rental Duration:</strong> {{ booking.rental_duration }} days</h6>
+                            <h6 class="font-weight-bold text-success"><strong>Total Price:</strong> ₹ {{ booking.total_price }}</h6>
+                            <hr>
+
+                            <a href="{% url 'booking_detail' booking.id %}" class="btn btn-primary w-100 py-2 mt-3 rounded-pill">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center py-3" role="alert">
+            You don't have any bookings at the moment. Please make a booking to get started.
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block style %}
+<style>
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .hover-zoom {
+        transition: transform 0.3s ease;
+    }
+    .hover-zoom:hover {
+        transform: scale(1.03);
+    }
+    .btn-primary {
+        background-color: #00695c;
+        border-color: #004d40;
+    }
+    .btn-primary:hover {
+        background-color: #004d40;
+        border-color: #00332e;
+    }
+    .font-weight-bold {
+        font-weight: 600;
+    }
+    .text-primary {
+        color: #00695c !important;
+    }
+    .text-success {
+        color: #28a745 !important;
+    }
+    .text-muted {
+        color: #6c757d !important;
+    }
+    .alert-info {
+        background-color: #e0f7fa;
+        color: #00695c;
+    }
+    .w-100 {
+        width: 100%;
+    }
+</style>
+{% endblock %}

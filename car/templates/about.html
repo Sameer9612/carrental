@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+About Us | QuickDrive
+{% endblock title %}
+
+{% block main %}
+
+<!-- About Us Hero Section -->
+<div class="about-hero">
+    <div class="main-sec">
+        <div class="left">
+            <p class="txt1">About <span class="blue-text">QuickDrive</span></p>
+            <p>We provide the best car rental services to meet your needs. Let us introduce you to who we are and what we stand for.</p>
+        </div>
+        <div class="right">
+            <img src="{% static 'car/images/banner/boy.png' %}" alt="About Us Image" />
+        </div>
+    </div>
+</div>
+
+<!-- Company Introduction Section -->
+<div class="company-intro-sec py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <h3>Who We Are</h3>
+                <p class="lead">QuickDrive is a leading car rental service provider that offers an easy, fast, and affordable way to rent cars worldwide.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Our History Section -->
+<div class="company-history-sec py-5 bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <h3>Our History</h3>
+                <p class="lead">QuickDrive was founded in 2025 with a mission to make car rentals easier and more accessible. We are growing rapidly to serve clients all over the world.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Our Services Section -->
+<div class="our-services-sec py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <h3>Our Services</h3>
+                <p class="lead">We offer a range of services tailored to meet your travel and transportation needs. From short-term rentals to long-term leasing, we’ve got you covered.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="{% static 'car/images/banner/2.jpeg' %}" alt="Car Rental" class="img-fluid">
+                    <h5>Car Rental</h5>
+                    <p>Choose from a variety of cars for daily, weekly, or monthly rentals.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="{% static 'car/images/banner/1.jpeg' %}" alt="Long Term Leasing" class="img-fluid">
+                    <h5>Long Term Leasing</h5>
+                    <p>Affordable leasing options for long-term travel and business needs.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="{% static 'car/images/banner/3.jpeg' %}" alt="Car Delivery" class="img-fluid">
+                    <h5>Road Side Assistance</h5>
+                    <p>We offer Road Side Assistanc services right to your Location </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Our Vision & Mission Section -->
+<div class="vision-mission-sec py-5 bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <h3>Our Vision </h3>
+                <p class="lead">Our vision is to become the most trusted and convenient car rental service provider in the world, offering a seamless and personalized experience to all our customers.</p>
+                <h4>Our Mission</h4>
+                <p>Our mission is to provide hassle-free car rentals, with a focus on quality service, customer satisfaction, and affordability. We aim to offer flexible rental options for every traveler.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="foot-sec">
+    <div class="logo">
+        <h1>QuickDrive</h1>
+    </div>
+
+    <div class="copy">
+        <p>Copyright &copy; 2025 Design By QuickDrive</p>
+    </div>
+
+    <div class="item">
+        <a href="/">Website Terms</a>
+        <a href="/">Contact Us</a>
+        <a href="/">Privacy Policy</a>
+    </div>
+</footer>
+
+<!-- Custom Styles -->
+<style>
+    /* About Us Hero Section */
+    .about-hero {
+        background-color: #eaf6ff;
+        height: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-hero .main-sec {
+        display: flex;
+        column-gap: 50px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-hero .right {
+        width: 450px;
+        height: 480px;
+        margin: 78px;
+        border-radius: 30%;
+        background-image: linear-gradient(155deg, #8ac8ff, #b2c1c9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-hero .right img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        padding-bottom: 10px;
+        margin-top: 19px;     
+    }
+
+    .about-hero .left {
+        padding: 30px;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        row-gap: 20px;
+        flex-direction: column;
+        width: 552px;
+    }
+
+    .about-hero .left .txt1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+    }
+
+    /* Company Introduction Section */
+    .company-intro-sec {
+        background-color: #f9f9f9;
+        padding: 60px 0;
+        text-align: center;
+    }
+
+    .company-intro-sec h3 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .company-intro-sec p.lead {
+        font-size: 1.25rem;
+        color: #666;
+    }
+
+    /* Company History Section */
+    .company-history-sec {
+        background-color: #f1f1f1;
+        padding: 60px 0;
+        text-align: center;
+    }
+
+    .company-history-sec h3 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .company-history-sec p.lead {
+        font-size: 1.25rem;
+        color: #666;
+    }
+
+    /* Our Services Section */
+    .our-services-sec {
+        background-color: #eaf6ff;
+        padding: 60px 0;
+        text-align: center;
+    }
+
+    .our-services-sec .service-card {
+        margin: 30px;
+        text-align: center;
+    }
+
+    .our-services-sec .service-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .our-services-sec .service-card h5 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .our-services-sec .service-card p {
+        font-size: 1rem;
+        color: #666;
+    }
+
+    /* Vision & Mission Section */
+    .vision-mission-sec {
+        background-color: #f1f8ff;
+        padding: 60px 0;
+        text-align: center;
+    }
+
+    .vision-mission-sec h3 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .vision-mission-sec p.lead {
+        font-size: 1.25rem;
+        color: #666;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .vision-mission-sec h4 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+        margin-top: 20px;
+    }
+
+    /* Footer */
+    .foot-sec {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 50px;
+        background: whitesmoke;
+    }
+
+    .foot-sec .item {
+        display: flex;
+        column-gap: 20px;
+    }
+
+    .foot-sec .item a {
+        text-decoration: none;
+        color: black;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .about-hero .main-sec {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .about-hero .right img {
+            width: 80%;
+        }
+
+        .company-intro-sec h3,
+        .company-history-sec h3,
+        .vision-mission-sec h3 {
+            font-size: 2.2rem;
+        }
+
+        .company-intro-sec p.lead,
+        .company-history-sec p.lead,
+        .vision-mission-sec p.lead {
+            font-size: 1rem;
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 150px;
+        }
+    }
+</style>
+
+{% endblock main %}

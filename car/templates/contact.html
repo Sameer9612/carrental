@@ -1,0 +1,276 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Contact Us | QuickDrive
+{% endblock title %}
+
+{% block main %}
+
+<!-- Contact Us Hero Section -->
+<div class="contact-hero">
+    <div class="main-sec row justify-content-center align-items-center">
+        <div class="col-12 col-md-6 left text-center text-md-start">
+            <p class="txt1">Get In Touch With <span class="blue-text">QuickDrive</span></p>
+            <p>Have a question or need help with your car rental? Our team is here to assist you. Reach out today and we'll respond as soon as possible.</p>
+        </div>
+
+        {% comment %} <div class="col-12 col-md-6 right d-flex justify-content-center align-items-center">
+            <img src="{% static 'car/images/banner/person1.png' %}" alt="Contact Us Image" class="img-fluid"/>
+        </div>
+    </div>
+</div> {% endcomment %}
+
+<!-- Contact Form Section -->
+<div class="contact-form-sec py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <h3>Contact Us</h3>
+                <p class="lead">We’re here to help! Please fill out the form below, and we’ll get back to you as soon as possible.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <form action="/submit-contact-form/" method="POST" class="contact-form">
+                    {% csrf_token %}
+                    <div class="mb-4">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="form-label">Your Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="form-label">Your Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message here" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Company Information Section -->
+<div class="company-info-sec py-5 bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <h3>Our Location</h3>
+                <p class="lead">Visit our office or reach out for any inquiries.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="card shadow-lg border-0 rounded">
+                    <div class="card-body">
+                        <h5 class="card-title">QuickDrive Office</h5>
+                        <p><i class="fa fa-map-marker-alt text-primary"></i> QuickDrive Dwarka, Delhi, India</p>
+                        <p><i class="fa fa-phone text-primary"></i> +91 1234567890</p>
+                        <p><i class="fa fa-envelope text-primary"></i> support@quickdrive.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Us Footer Section -->
+<section class="contact-footer-sec py-5">
+    <div class="container text-center">
+        <h3>Still Have Questions?</h3>
+        <p class="lead">Feel free to contact us via email or call us for more information.</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="foot-sec py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo">
+            <h1>QuickDrive</h1>
+        </div>
+
+        <div class="copy">
+            <p>Copyright &copy; 2025 Design By QuickDrive</p>
+        </div>
+
+        <div class="item">
+            <a href="/">Website Terms</a>
+            <a href="/">Contact Us</a>
+            <a href="/">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Custom Styles -->
+<style>
+    /* Contact Us Hero Section */
+    .contact-hero {
+        background-color: #eaf6ff;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 0;
+    }
+
+    .contact-hero .main-sec {
+        display: flex;
+        column-gap: 50px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-hero .right {
+        border-radius: 50%;
+        overflow: hidden;
+        background-image: linear-gradient(155deg, #8ac8ff, #b2c1c9);
+    }
+
+    .contact-hero .right img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.1));
+    }
+
+    .contact-hero .left {
+        padding: 30px;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-hero .left .txt1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+
+    /* Contact Form Section */
+    .contact-form-sec {
+        background-color: #f1f8ff;
+        padding: 60px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form-sec h3 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #0043ff;
+    }
+
+    .contact-form-sec p.lead {
+        font-size: 1.25rem;
+        color: #666;
+        margin-top: 10px;
+        margin-bottom: 40px;
+    }
+
+    .contact-form-sec .form-control {
+        font-size: 1.1rem;
+        padding: 15px;
+        border-radius: 8px;
+        border: 2px solid #ddd;
+        margin-bottom: 20px;
+        transition: border-color 0.3s ease;
+    }
+
+    .contact-form-sec .form-control:focus {
+        border-color: #0043ff;
+        box-shadow: 0 0 5px rgba(0, 67, 255, 0.5);
+    }
+
+    .contact-form-sec .btn-primary {
+        background-color: #0043ff;
+        border-radius: 30px;
+        padding: 12px 25px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: none;
+        width: 100%;
+        transition: background-color 0.3s ease;
+    }
+
+    .contact-form-sec .btn-primary:hover {
+        background-color: #0036cc;
+    }
+
+    /* Company Information Section */
+    .company-info-sec {
+        background-color: #f9f9f9;
+        padding: 30px 0;
+    }
+
+    .company-info-sec .container {
+        max-width: 800px;
+    }
+
+    .company-info-sec h3 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .company-info-sec p {
+        font-size: 1rem;
+        color: #666;
+    }
+
+    .contact-footer-sec {
+        background-color: #0043ff;
+        color: white;
+        padding: 30px 0;
+    }
+
+    .foot-sec {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: whitesmoke;
+    }
+
+    .foot-sec .item {
+        display: flex;
+        column-gap: 20px;
+    }
+
+    .foot-sec .item a {
+        text-decoration: none;
+        color: black;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .contact-hero .main-sec {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .contact-hero .right img {
+            width: 80%;
+        }
+
+        .contact-form-sec h3 {
+            font-size: 2.5rem;
+        }
+
+        .contact-form-sec .form-control {
+            font-size: 1rem;
+        }
+
+        .contact-form-sec .btn-primary {
+            font-size: 1.1rem;
+            padding: 10px 20px;
+        }
+    }
+</style>
+
+{% endblock main %}
